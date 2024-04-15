@@ -29,6 +29,8 @@ historydf[f"OpenClose Height MA({maPeriodCount})"] = historydf.rolling(maPeriodC
 
 historydf[f"OpenClose Height MAX({maPeriodCount})"] = historydf.rolling(maPeriodCount)["OpenClose Height abs"].max()
 
+historydf["Gap Open"] = historydf["Open"] - historydf["Close"].shift(1)
+
 print(historydf)
 
 historydf.plot.line()
