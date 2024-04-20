@@ -1,6 +1,6 @@
 import yfinance as yf
 import pandas as pd
-
+import matplotlib.pyplot as plt
 
 # # get all stock info from yfinance
 # spy = yf.Ticker("^GSPC")
@@ -33,4 +33,6 @@ historydf["Gap Open"] = historydf["Open"] - historydf["Close"].shift(1)
 
 print(historydf)
 
-historydf.plot.line()
+subsetdf = historydf[["Gap Open", "HighLow Height abs", f"HighLow Height MA({maPeriodCount})"]]
+plot = subsetdf.tail(1000).plot(title="stuff")
+plt.show()
