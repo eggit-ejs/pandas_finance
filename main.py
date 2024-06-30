@@ -31,6 +31,8 @@ historydf[f"OpenClose Height MAX({maPeriodCount})"] = historydf.rolling(maPeriod
 
 historydf["Gap Open"] = historydf["Open"] - historydf["Close"].shift(1)
 
+historydf["applyTest"] = historydf.apply(lambda x: x["Open"] + x["Close"], 1)
+
 print(historydf)
 
 subsetdf = historydf[["Gap Open", "HighLow Height abs", f"HighLow Height MA({maPeriodCount})"]]
